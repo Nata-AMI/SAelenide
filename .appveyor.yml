@@ -1,0 +1,17 @@
+image: Ubuntu  # ����� ��� ������
+
+stack: jdk 11  # ������ JDK
+
+branches:
+  only:
+    - master  # ����� git
+
+build: off  # ����� ������������ ���� ������ ������
+
+install:
+  # ��������� SUT (& ��������, ��� � ������� ������ - �� ��������� �������� ��� ������� ������)
+  - java -jar ./artifacts/app-card-delivery.jar &
+
+
+build_script:
+  - ./gradlew test --info  # ��������� ����, ���� --info ��������� �������� ������ ����������
